@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+<head>
+	<meta charset="utf-8">
+
+	<title>1kwm2</title>
+
+	<!-- <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script> -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+	<!-- para leaflet ================================================================== -->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+		integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+		crossorigin="" />
+
+
+	<!-- java script -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+		crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+		crossorigin="anonymous"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+	<!-- Make sure you put this AFTER Leaflet's CSS -->
+	<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+		integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+		crossorigin=""></script>
+	<!-- para leaflet ================================================================== -->
+
+
+
+
+</head>
+
+<body class="d-flex flex-column h-100">
+
+	<header>
+		<nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+			<a href="https://1kwm2.com/" class="navbar-brand d-flex align-items-center">
+				<!-- <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="mr-2" viewBox="0 0 24 24" focusable="false"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg> -->
+				<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-brightness-high-fill" fill="currentColor"
+					xmlns="http://www.w3.org/2000/svg">
+					<path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0z" />
+					<path fill-rule="evenodd"
+						d="M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z" />
+				</svg>
+				<!-- <strong>1 kW/m<sup>2</sup></strong> -->
+			</a>
+
+			<a id=informe class="nav-link" href="{{ url_for('infor')}}">
+				<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-text-fill" fill="currentColor"
+					xmlns="http://www.w3.org/2000/svg">
+					<path fill-rule="evenodd"
+						d="M12 1H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zM5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z" />
+				</svg>
+
+				Informe</a>
+
+			<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">
+				<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-question-square-fill" fill="currentColor"
+					xmlns="http://www.w3.org/2000/svg">
+					<path fill-rule="evenodd"
+						d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm4.57 6.033H5.25C5.22 4.147 6.68 3.5 8.006 3.5c1.397 0 2.673.73 2.673 2.24 0 1.08-.635 1.594-1.244 2.057-.737.559-1.01.768-1.01 1.486v.355H7.117l-.007-.463c-.038-.927.495-1.498 1.168-1.987.59-.444.965-.736.965-1.371 0-.825-.628-1.168-1.314-1.168-.901 0-1.358.603-1.358 1.384zm1.251 6.443c-.584 0-1.009-.394-1.009-.927 0-.552.425-.94 1.01-.94.609 0 1.028.388 1.028.94 0 .533-.42.927-1.029.927z" />
+				</svg>
+				Ayuda</a>
+
+			<div class="collapse navbar-collapse" id="navbarsExample03">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item">
+
+					</li>
+
+					<li class="nav-item">
+
+					</li>
+					<li class="nav-item">
+
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+
+
+	<main role="main" class="flex-shrink-0">
+		<br>
+		<div class="container">
+			<section class="jumbotron text-center">
+				<div class="container">
+					<h1>PÉRDIDAS  ORIENTACIÓN E INCLINACIÓN</h1>
+					<p class="lead text-muted">
+						Formulario</p>
+					<p>
+						<!-- <a href="#" class="btn btn-primary my-2">Main call to action</a>
+						<a href="#" class="btn btn-secondary my-2">Secondary action</a> -->
+					</p>
+				</div>
+			</section>
+
+			<div class="album py-5 bg-light">
+				<div class="container">
+
+					<div class="row">
+
+						<div class="col-md-4">
+							<div id=sc class="card mb-4 shadow-sm">
+								<!-- <div id="gincl"></div> -->
+								<div class="card-body">
+
+									<div>
+										<small class="text-muted">Perdidas P=<span id="P2"></span> %</small>
+
+									</div>
+									<small>
+										<a>lat=<span class="font-weight-bold text-primary ml-2 mt-1 valueSpan"
+												id="latitud_value">
+											</span>
+											lon=<span class="font-weight-bold text-primary ml-2 mt-1 valueSpan"
+												id="longitud_value">
+											</span>
+										</a>
+									</small>
+									<div class="d-flex justify-content-between align-items-center">
+										<div id="map" style="width: 500px; height: 350px;"></div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-4">
+							<div id=sc class="card mb-4 shadow-sm">
+								<!-- <div id="gincl"></div> -->
+								<img src="{{ url_for('static', filename='images/beta.png') }}"
+									class="bd-placeholder-img card-img-top" width="100%" height="225"
+									xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"
+									focusable="false" role="img" aria-label="Placeholder: Thumbnail">
+								<title>Placeholder</title>
+								<rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
+									dy=".3em"></text>
+								</svg>
+								<div class="card-body">
+
+
+									<small class="text-muted">Perdidas P=<span id="P"></span> %</small>
+									<p class="card-text">
+										<a>Inclinacion &beta;=
+											<span class="font-weight-bold text-primary ml-2 mt-1 valueSpan"
+												id="inclinacion_value">
+											</span>
+											<a>
+
+									</p>
+									<input type="range" class="custom-range" min="0" max="90" value="30" step="1"
+										id="inclinacion_range">
+								</div>
+							</div>
+						</div>
+
+
+
+						<div class="col-md-4">
+							<div id=sc class="card mb-4 shadow-sm">
+								<img src="{{ url_for('static', filename='images/alfa.png') }}"
+									class="bd-placeholder-img card-img-top" width="100%" height="225"
+									xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"
+									focusable="false" role="img" aria-label="Placeholder: Thumbnail">
+								<title>Placeholder</title>
+								<rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
+									dy=".3em"></text>
+								</svg>
+								<div class="card-body">
+
+									<small class="text-muted">Perdidas P=<span id="P1"></span> %</small>
+									<p class="card-text">
+										<a>Orientacion &alpha;=<span
+												class="font-weight-bold text-primary ml-2 mt-1 valueSpan"
+												id="orientacion_value"></span></a>
+									</p>
+									<input type="range" class="custom-range" min="-180" max="180" value="0" step="1"
+										id="orientacion_range">
+								</div>
+							</div>
+						</div>
+
+
+
+
+
+
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+
+
+
+	<main role="main" class="container">
+		<div>
+			<br><br>
+			<h1> </h1>
+			<p class="lead"></p>
+			<!-- <a href=# id=calculate>calcula en el servidor</a> -->
+			<div>
+
+
+
+
+			</div>
+		</div>
+	</main>
+
+
+
+	<!-- <main role="main" class="container">
+		<div>
+			<br><br>
+			<h1> PÉRDIDAS POR ORIENTACIÓN E INCLINACIÓN</h1>
+			<p class="lead">Introduce los angulos de orientacio e inclinacion y latitud</p>
+			<div>
+				<a class="dropdown-item"><input type="range" class="slider" min="35" max="45" value="40" step="1"
+						id="latitud_range">&Phi;=<span id="latitud_value"></span></a>
+				<a class="dropdown-item"><input type="range" class="slider" min="0" max="90" value="35" step="1"
+						id="inclinacion_range">&beta;=<span id="inclinacion_value"></span></a>
+				<a class="dropdown-item"><input type="range" class="slider" min="-180" max="180" value="0" step="1"
+						id="orientacion_range">&alpha;=<span id="orientacion_value"></span></a>
+				<span id="P">P</span>
+				<div id="g0"></div>
+
+			</div>
+		</div>
+	</main> -->
+
+
+	<footer class="container">
+		<p>&copy; 1kwm2 2020</p>
+	</footer>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+	<!-- JS, Popper.js, and jQuery -->
+
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+		crossorigin="anonymous"></script>
+
+	<script type=text/javascript>
+		$SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+  
+
+  
+		  var slider2 = document.getElementById("inclinacion_range");
+		  var output2 = document.getElementById("inclinacion_value");
+		  output2.innerHTML = slider2.value;
+		  slider2.oninput = function () {
+			  output2.innerHTML = this.value;
+			  fetchdata()
+		  }
+  
+		  var slider3 = document.getElementById("orientacion_range");
+		  var output3 = document.getElementById("orientacion_value");
+		  output3.innerHTML = slider3.value;
+		  slider3.oninput = function () {
+			  output3.innerHTML = this.value;
+			  fetchdata()
+		  }
+  
+  
+
+		  function initialize() {
+			// Initialize the map
+			var map = L.map('map').setView([40, -4], 5);
+			L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+				attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+				maxZoom: 18
+			}).addTo(map);
+
+
+			// Event Handlers
+			var output_lat = document.getElementById("latitud_value");
+			var output_lon = document.getElementById("longitud_value");
+			var theMarker = {};
+			map.on('click', function (e) {
+				lat = e.latlng.lat;
+				lon = e.latlng.lng;
+
+				console.log("has clicao LAT: " + lat + " y LONG: " + lon);
+				//Clear existing marker, 
+
+				if (theMarker != undefined) {
+					map.removeLayer(theMarker);
+				};
+
+				//Add a marker to show where you clicked.
+				theMarker = L.marker([lat, lon]).addTo(map);
+				var llat = lat.toFixed(3);
+				var llon = lon.toFixed(3);
+				output_lat.innerHTML = llat;
+				output_lon.innerHTML = llon;
+				fetchdata()
+			});
+		}
+
+
+		  function fetchdata() {
+			$.getJSON($SCRIPT_ROOT + '/formulario', {
+				'latitud': document.getElementById("latitud_value").innerHTML,
+				'inclinacion': document.getElementById("inclinacion_value").innerHTML,
+				'orientacion': document.getElementById("orientacion_value").innerHTML,
+                }, function(data) {
+				$("#P").text(data.P);
+				$("#P1").text(data.P);
+				$("#P2").text(data.P);
+                });
+		  }
+
+
+		  document.addEventListener("DOMContentLoaded", function() {fetchdata();initialize()}, false);
+		//   document.addEventListener("mouseup", function () { fetchdata() }, false);
+		//   document.addEventListener("touchmove", function () { fetchdata() }, false);
+
+	  </script>
+
+
+</body>
+
+</html>

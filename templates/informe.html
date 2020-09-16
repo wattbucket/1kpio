@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+<head>
+	<meta charset="utf-8">
+
+	<title>1kwm2</title>
+
+	<!-- <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script> -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+
+</head>
+
+<body>
+	<header>
+		<nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+			<a href="https://1kwm2.com/" class="navbar-brand d-flex align-items-center">
+				<!-- <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="mr-2" viewBox="0 0 24 24" focusable="false"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg> -->
+				<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-brightness-high-fill" fill="currentColor"
+					xmlns="http://www.w3.org/2000/svg">
+					<path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0z" />
+					<path fill-rule="evenodd"
+						d="M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z" />
+				</svg>
+				<!-- <strong>1 kW/m<sup>2</sup></strong> -->
+			</a>
+			<a class="nav-link" href="{{ url_for('index')}}">
+				<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-sliders" fill="currentColor"
+					xmlns="http://www.w3.org/2000/svg">
+					<path fill-rule="evenodd"
+						d="M14 3.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM11.5 5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM7 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM4.5 10a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm9.5 3.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM11.5 15a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" />
+					<path fill-rule="evenodd"
+						d="M9.5 4H0V3h9.5v1zM16 4h-2.5V3H16v1zM9.5 14H0v-1h9.5v1zm6.5 0h-2.5v-1H16v1zM6.5 9H16V8H6.5v1zM0 9h2.5V8H0v1z" />
+				</svg>
+				Formulario
+			</a>
+			<a class="nav-link " onclick="printDiv('impreso')" href="#" tabindex="-1" aria-disabled="true">
+				<svg width=" 1em" height="1em" viewBox="0 0 16 16" class="bi bi-printer-fill" fill="currentColor"
+					xmlns="http://www.w3.org/2000/svg">
+					<path d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2H5z" />
+					<path fill-rule="evenodd"
+						d="M11 9H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1z" />
+					<path fill-rule="evenodd"
+						d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2V7zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z" />
+				</svg>
+				imprimir
+			</a>
+			<!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03"
+				aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button> -->
+
+
+			<!-- </div> -->
+		</nav>
+	</header>
+	<section class="jumbotron text-center">
+		<div class="container">
+			<h1>PÉRDIDAS POR ORIENTACIÓN E INCLINACIÓN</h1>
+			<p class="lead text-muted">
+				Informe</p>
+			<p>
+				<!-- <a href="#" class="btn btn-primary my-2">Main call to action</a>
+				<a href="#" class="btn btn-secondary my-2">Secondary action</a> -->
+			</p>
+		</div>
+	</section>
+
+	<div id="impreso">
+		<span id="informe">
+			<img src="{{ url_for('static', filename='images/Loading_icon.gif') }}">
+		</span>
+
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+	<script type=text/javascript>
+	$SCRIPT_ROOT = {{ request.script_root | tojson | safe }};
+	
+	function printDiv(divName) {
+    var printContents = document.getElementById(divName).innerHTML;
+    var originalContents = document.body.innerHTML;
+    document.body.innerHTML = printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
+}
+</script>
+
+
+	<script>
+		// alert('informe')
+		$.getJSON($SCRIPT_ROOT + '/informe', {
+		}, function (data) {
+			$("#informe").html(data.informe);
+		});
+
+	</script>
+</body>
+
+</html>
